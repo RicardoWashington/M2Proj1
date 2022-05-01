@@ -4,6 +4,7 @@ let sum = 0.00;
 let countArray = 0;
 let positionArray = 0;
 let arrayProd = {nome:[], prodValue:[]};
+
 // Seletores
 const header = document.querySelector("header");
 const todoInput = document.querySelector('.todo-input');
@@ -76,6 +77,15 @@ function deleteCheck(event) {
         todo.remove();
         count--;
         countList.innerText = 'Total de itens cadastrados: '+ count;
+        for(let i=0;i<arrayProd.nome.length;i++){
+            if (arrayProd.nome[i] == product){
+                sum -= parseFloat(arrayProd.prodValue[i]);
+                arrayProd.nome[i] = 'X';
+                arrayProd.prodValue[i] = 0;
+            }
+        }
+        sumTotal.innerText = parseFloat(sum.toFixed(2)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
     }
     if (item.classList[0] === "complete-btn") {
         if (item.children[0].className === "fa-solid fa-square"){
