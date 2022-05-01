@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <title>Lista de Compras - DEVinHouse</title>
+</head>
+<body>
+    <header>
+        <div class="header-base">
+            <button class="btn-mode"><i id="dark-mode" class="fa-solid fa-moon">DARK</i></button>
+            <img src="./img/logo-dev-in-01.png">
+            <div class="header-text">
+                <a class="active" >Lista de Compras - DEVinHouse</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Inserir item na lista</h1>
+        <form>
+            <input type="text" class="todo-input" placeholder="Digite um produto" required>
+            <button class="todo-button" type="submit">
+                Inserir
+            </button>
+        </form>
+        </div>
+        <div class="todo-container">
+            <ul class="todo-list">
+                <a href="#" class="list-total">Todos</a>
+                <a> -- </a>
+                <a href="#" class="list-bought">Comprados</a>
+                <a> -- </a>
+                <a href="#" class="list-listed">Listados</a>
+                <p class="count">Total de itens cadastrados: 0</p>
+            </ul>
+        </div>
+        <div class="values">
+            <h2>Total das compras:</h2>
+            <p class="total-values">R$ 0,00</p>
+        </div>
+    </main>
+    <div class="modal-container">
+		<div class="modal">
+			<form>
+				<input class="modal-input" type="text" placeholder="Informe o valor" >
+				<button class="modal-button" type="submit" >
+                    Inserir
+                </button>
+			</form>
+		</div>
+	</div>
+</body>
+<script src="./script/app.js"></script>
+</html>
