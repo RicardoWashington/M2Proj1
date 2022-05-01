@@ -19,3 +19,4 @@ A pagina inicial ficou definida como **index.html**.
 
 ---
 
+Devido ao pouco tempo para entrega do projeto, algumas rotinas podem ser melhoradas e reescritas para diminuir o código e deixar mais elegante. Mas, o projeto proposto está totalmente funcional.
