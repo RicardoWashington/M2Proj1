@@ -206,7 +206,9 @@ form button:hover {
   align-items: center;
   
 }
-
+.modal-container p{
+  font-size: 12px;
+}
 .modal-container.mostrar {
   display: flex;
   
