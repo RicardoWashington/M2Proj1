@@ -84,8 +84,10 @@ function deleteCheck(event) {
                 arrayProd.prodValue[i] = 0;
             }
         }
+        if (isNaN(sum)){
+            sum = 0;
+        } 
         sumTotal.innerText = parseFloat(sum.toFixed(2)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
     }
     if (item.classList[0] === "complete-btn") {
         if (item.children[0].className === "fa-solid fa-square"){
