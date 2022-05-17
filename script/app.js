@@ -4,6 +4,7 @@ let sum = 0.00;
 let countArray = 0;
 let positionArray = 0;
 let arrayProd = {nome:[], prodValue:[]};
+
 // Seletores
 const header = document.querySelector("header");
 const todoInput = document.querySelector('.todo-input');
@@ -33,7 +34,7 @@ modalButton.addEventListener('click', updateValues);
 // Functions
 // function para adicioar a lista de itens
 function addTodo(event){
-
+    
     if (todoInput.value){
         event.preventDefault()
         const todoDiv = document.createElement('div');
@@ -69,13 +70,25 @@ function addTodo(event){
 function deleteCheck(event) {
     const item = event.target;
     const product = event.target.parentElement.children[0].innerText;
-
+    
     if (item.classList[0] === "trash-btn") {
         const todo = item.parentElement;
+        console.log(todo);  
         removeLocalTodos(todo);
         todo.remove();
         count--;
         countList.innerText = 'Total de itens cadastrados: '+ count;
+        for(let i=0;i<arrayProd.nome.length;i++){
+            if (arrayProd.nome[i] == product){
+                sum -= parseFloat(arrayProd.prodValue[i]);
+                arrayProd.nome[i] = 'X';
+                arrayProd.prodValue[i] = 0;
+            }
+        }
+        if (isNaN(sum)){
+            sum = 0;
+        } 
+        sumTotal.innerText = parseFloat(sum.toFixed(2)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
     if (item.classList[0] === "complete-btn") {
         if (item.children[0].className === "fa-solid fa-square"){
@@ -87,24 +100,26 @@ function deleteCheck(event) {
                     arrayProd.prodValue[i] = 0;
                 }
             }
+            if (isNaN(sum)){
+                sum = 0;
+            } 
             sumTotal.innerText = parseFloat(sum.toFixed(2)).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-
+            
         } else {
             item.children[0].className = "fa-solid fa-square";
             modalContainer.classList.add('mostrar');
         }
         const todo = item.parentElement;
         todo.classList.toggle('completed');
-
+        
     }
     arrayProd.nome[countArray] = product;
-
+    
 }
 
 //function para salvar LocalStorage
 function saveLocalTodos(todo){
     let todos;
-    console.log(todo)
     if(localStorage.getItem('todos') === null) {
         todos = [];
     } else {
@@ -152,6 +167,7 @@ function removeLocalTodos(todo){
         todos = JSON.parse(localStorage.getItem('todos'));
     }
     const todoIndex = todo.children[0].innerText;
+    console.log(todoIndex);
     todos.splice(todos.indexOf(todoIndex), 1);
     localStorage.setItem('todos', JSON.stringify(todos))
 }
@@ -225,15 +241,14 @@ function verifyList(event){
             }else{
                 element.classList.remove("not-show");  
             }
-
+            
         });
     }
-
+    
 }
 
 function updateValues(event){
-    console.log(event)
-    event.preventDefault()
+    event.preventDefault();
     if (modalInput.value) {
         if (modalInput.value > 0){
             if (event.target.classList == 'modal-button'){
@@ -246,14 +261,18 @@ function updateValues(event){
             }
         }
     }
-
+    
 }
 //function para validar se já existe item na lista
 function validateDupl(todo){
     let todos;
-    todos = JSON.parse(localStorage.getItem('todos'));
+    if(localStorage.getItem('todos') === null) {
+        todos = [];
+    } else {
+        todos = JSON.parse(localStorage.getItem('todos'));
+    }
     if (todos.indexOf(todo) == -1){
         return true;
     }
     return false;    
-} 
+}
